@@ -1,0 +1,17 @@
+# Eurovision Control Center - Python Dependencies
+# MIDI control for Launchpad Mini
+mido>=1.2.10
+
+# VLC Python bindings for audio playback
+python-vlc>=3.0.18121
+
+# OBS WebSocket client for scene control
+obsws-python>=1.5.1
+
+# Standard library modules (included with Python)
+# - threading
+# - time
+# - os
+# - json
+# - logging
+# - typing
