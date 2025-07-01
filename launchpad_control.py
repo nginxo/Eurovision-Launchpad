@@ -86,29 +86,39 @@ class EurovisionController:
             },
             MenuMode.MUSIC: {
                 0: lambda: self.play_music("intro", 0),
-                1: lambda: self.play_music("breakintro", 1),
-                2: lambda: self.play_music("hosts", 2),
-                3: lambda: self.play_music("greenroom", 3),
-                4: lambda: self.play_music("interval", 4),
-                5: lambda: self.play_music("tension", 5),
-                6: lambda: self.play_music("winner", 6),
-                7: lambda: self.play_music("credits", 7),
-                32: self.stop_music,
-                33: self.volume_up,
-                34: self.volume_down,
-                35: self.mute_toggle,
+                1: lambda: self.play_music("northernlights", 1),
+                2: lambda: self.play_music("malmoarena", 2),
+                3: lambda: self.play_music("beginning", 3),
+                7: lambda: self.play_music("stageready", 7),
+                16: lambda: self.play_music("hosts", 16),
+                17: lambda: self.play_music("green-room", 17),
+                48: lambda: self.play_music("postcard-piano", 48),
+                49: lambda: self.play_music("postcard-flow", 49),
+                50: lambda: self.play_music("postcard-drums", 50),
+                51: lambda: self.play_music("postcard-dreams", 51),
+                52: lambda: self.play_music("postcard-calm", 52),
+                53: lambda: self.play_music("postcard-arpeggio", 53),
+                80: lambda: self.play_music("voting-music", 80),
+                81: lambda: self.play_music("lines-closed", 81),
+                82: lambda: self.play_music("douze-points", 82),
+                96: lambda: self.play_music("winners-theme", 96),
+                97: lambda: self.play_music("winners-walk", 97),
+                72: self.stop_music,
+                88: self.volume_up,
+                104: self.volume_down,
+                120: self.mute_toggle,
             },
             MenuMode.EFFECTS: {
-                32: self.flash_lights,
-                33: self.celebration_mode,
-                34: self.voting_mode,
-                35: self.technical_break,
+                0: self.flash_lights,
+                1: self.celebration_mode,
+                2: self.voting_mode,
+                3: self.technical_break,
             },
             MenuMode.UTILITY: {
-                48: self.reset_all,
-                49: self.test_mode,
-                50: self.emergency_stop,
-                51: self.show_status,
+                0: self.reset_all,
+                1: self.test_mode,
+                2: self.emergency_stop,
+                3: self.show_status,
             }
         }
         self.menu_colors = {
@@ -138,26 +148,36 @@ class EurovisionController:
                 1: LaunchpadColors.GREEN_FULL,
                 2: LaunchpadColors.GREEN_FULL,
                 3: LaunchpadColors.AMBER_FULL,
-                4: LaunchpadColors.AMBER_FULL,
-                5: LaunchpadColors.RED_FULL,
-                6: LaunchpadColors.GREEN_FULL,
                 7: LaunchpadColors.YELLOW_FULL,
-                32: LaunchpadColors.RED_FULL,
-                33: LaunchpadColors.GREEN_FULL,
-                34: LaunchpadColors.RED_FULL,
-                35: LaunchpadColors.ORANGE_FULL,
+                16: LaunchpadColors.BLUE_FULL,
+                17: LaunchpadColors.BLUE_FULL,
+                48: LaunchpadColors.RED_FULL,
+                49: LaunchpadColors.RED_FULL,
+                50: LaunchpadColors.RED_FULL,
+                51: LaunchpadColors.RED_FULL,
+                52: LaunchpadColors.RED_FULL,
+                53: LaunchpadColors.RED_FULL,
+                80: LaunchpadColors.GREEN_FULL,
+                81: LaunchpadColors.RED_FULL,
+                82: LaunchpadColors.AMBER_FULL,
+                96: LaunchpadColors.YELLOW_FULL,
+                97: LaunchpadColors.YELLOW_FULL,
+                72: LaunchpadColors.RED_FULL,
+                88: LaunchpadColors.GREEN_FULL,
+                104: LaunchpadColors.RED_FULL,
+                120: LaunchpadColors.ORANGE_FULL,
             },
             MenuMode.EFFECTS: {
-                32: LaunchpadColors.YELLOW_FULL,
-                33: LaunchpadColors.AMBER_FULL,
-                34: LaunchpadColors.ORANGE_FULL,
-                35: LaunchpadColors.AMBER_FULL,
+                0: LaunchpadColors.YELLOW_FULL,
+                1: LaunchpadColors.AMBER_FULL,
+                2: LaunchpadColors.ORANGE_FULL,
+                3: LaunchpadColors.AMBER_FULL,
             },
             MenuMode.UTILITY: {
-                48: LaunchpadColors.RED_FULL,
-                49: LaunchpadColors.BLUE_FULL,
-                50: LaunchpadColors.RED_FULL,
-                51: LaunchpadColors.GREEN_FULL,
+                0: LaunchpadColors.RED_FULL,
+                1: LaunchpadColors.BLUE_FULL,
+                2: LaunchpadColors.RED_FULL,
+                3: LaunchpadColors.GREEN_FULL,
             }
         }
         self.circular_button_colors = {
@@ -176,13 +196,23 @@ class EurovisionController:
             },
             "music_files": {
             "intro": "music/eurovision_intro.mp3",
-            "interval": "music/interval_act.mp3",
-            "tension": "music/tension_music.mp3",
-            "winner": "music/winner_fanfare.mp3",
             "hosts": "music/hosts.mp3",
-            "credits": "music/credits.mp3",
-            "greenroom": "music/greenroom.mp3",
-            "breakintro": "music/break_intro.mp3"
+            "green-room": "music/green-room.mp3",
+            "northernlights": "music/northern-lights.mp3",
+            "malmoarena": "music/malmo-arena.mp3",
+            "beginning": "music/beginning.mp3",
+            "stageready": "music/stage-ready.mp3",
+            "postcard-piano": "music/postcard-piano.mp3",
+            "postcard-flow": "music/postcard-flow.mp3",
+            "postcard-drums": "music/postcard-drums.mp3",
+            "postcard-dreams": "music/postcard-dreams.mp3",
+            "postcard-calm": "music/postcard-calm.mp3",
+            "postcard-arpeggio": "music/postcard-arpeggio.mp3",
+            "voting-music": "music/voting-music.mp3",
+            "lines-closed": "music/lines-closed.mp3",
+            "douze-points": "music/douze-points.mp3",
+            "winners-theme": "music/winners-theme.mp3",
+            "winners-walk": "music/winners-walk.mp3"
             },
             "scenes": {
             "intro": "Eurovision Intro",
@@ -555,11 +585,11 @@ class EurovisionController:
     def flash_lights(self):
         def flash_sequence():
             original_menu = self.current_menu
-            for _ in range(3):
-                for pad in range(64):
+            for _ in range(10):
+                for pad in range(128):
                     self.set_pad_color(pad, LaunchpadColors.RED_FULL)
                 time.sleep(0.1)
-                for pad in range(64):
+                for pad in range(128):
                     self.set_pad_color(pad, LaunchpadColors.OFF)
                 time.sleep(0.1)
             self.current_menu = original_menu
@@ -573,7 +603,7 @@ class EurovisionController:
                      LaunchpadColors.BLUE_FULL, LaunchpadColors.YELLOW_FULL]
             for _ in range(10):
                 import random
-                for pad in range(64):
+                for pad in range(128):
                     self.set_pad_color(pad, random.choice(colors))
                 time.sleep(0.2)
             self.update_menu_display()
@@ -582,11 +612,11 @@ class EurovisionController:
 
     def voting_mode(self):
         def voting_sequence():
-            for _ in range(20):
-                for pad in range(64):
+            for _ in range(10):
+                for pad in range(128):
                     self.set_pad_color(pad, LaunchpadColors.AMBER_FULL)
                 time.sleep(0.5)
-                for pad in range(64):
+                for pad in range(128):
                     self.set_pad_color(pad, LaunchpadColors.AMBER_LOW)
                 time.sleep(0.5)
             self.update_menu_display()

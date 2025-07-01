@@ -1,12 +1,16 @@
 # Eurovision Launchpad Controller
 
-A comprehensive control system for managing Eurovision-like live events using a Novation Launchpad Mini, OBS Studio, and VLC media player. This project provides an intuitive interface for switching between camera scenes, controlling background music, and managing special effects during live broadcasts.
+A comprehensive control system for managing Eurovision-like live events using a Novation Launchpad Mini, or any Launchpad but they aren't fully tested, OBS Studio, and VLC media player. This project provides an intuitive interface for switching between camera scenes, controlling background music, and managing special effects during live broadcasts.
 
 ## ⚠️ Legal Disclaimer
 
 **This project is NOT affiliated with the European Broadcasting Union (EBU) or Eurovision in any way.** This is an independent, non-commercial project created for educational and entertainment purposes only. The name "Eurovision" is used purely for descriptive purposes to indicate the style of event this controller is designed for.
 
 **This software is provided free of charge and generates no revenue.** The developer assumes no responsibility for any legal issues that may arise from its use. Users are responsible for ensuring compliance with all applicable laws and regulations in their jurisdiction.
+
+## 🔊 Audio Files Source
+
+This project is based on the official Eurovision Song Contest 2024's OST that is published on Eurovision's Channel.
 
 ## 🎛️ Features
 
@@ -63,38 +67,48 @@ The script will create a `eurovision_config.json` file on first run. Edit this f
     "obs": {
         "host": "localhost",
         "port": 4455,
-        "password": "your_obs_password_here"
+        "password": "your_password_here" # When asking for support, don't share this line!
+    },
+    "music_files": {
+        "intro": "music/eurovision-intro.mp3",
+        "hosts": "music/hosts.mp3",
+        "green-room": "music/green-room.mp3",
+        "northernlights": "music/northern-lights.mp3",
+        "malmoarena": "music/malmo-arena.mp3",
+        "beginning": "music/beginning.mp3",
+        "stageready": "music/stage-ready.mp3",
+        "postcard-piano": "music/postcard-piano.mp3",
+        "postcard-flow": "music/postcard-flow.mp3",
+        "postcard-drums": "music/postcard-drums.mp3",
+        "postcard-dreams": "music/postcard-dreams.mp3",
+        "postcard-calm": "music/postcard-calm.mp3",
+        "postcard-arpeggio": "music/postcard-arpeggio.mp3",
+        "voting-music": "music/voting-music.mp3",
+        "lines-closed": "music/lines-closed.mp3",
+        "douze-points": "music/douze-points.mp3",
+        "winners-theme": "music/winners-theme.mp3",
+        "winners-walk": "music/winners-walk.mp3"
     },
     "scenes": {
         "intro": "Eurovision Intro",
-        "video": "Eurovision Video", 
+        "video": "Eurovision Video",
         "stage1": "Main Stage CAM1",
         "stage2": "Main Stage CAM2",
         "stage3": "Main Stage CAM3",
         "stage4": "Main Stage CAM4",
         "stage5": "Main Stage CAM5",
-        "stage6": "Main Stage CAM6", 
+        "stage6": "Main Stage CAM6",
         "stage7": "Main Stage CAM7",
         "stage8": "Main Stage CAM8",
         "greenroom1": "Green Room CAM1",
         "greenroom2": "Green Room CAM2",
-        "greenroom3": "Green Room CAM3", 
+        "greenroom3": "Green Room CAM3",
         "greenroom4": "Green Room CAM4",
         "break": "Commercial Break",
         "scoreboard": "Scoreboard",
         "winner": "Winner Announcement",
         "credits": "End Credits",
         "backup": "Technical Difficulties"
-    },
-    "music_files": {
-        "intro": "music/eurovision_intro.mp3",
-        "interval": "music/interval_act.mp3",
-        "tension": "music/tension_music.mp3",
-        "winner": "music/winner_fanfare.mp3",
-        "hosts": "music/hosts.mp3",
-        "credits": "music/credits.mp3",
-        "greenroom": "music/greenroom.mp3",
-        "breakintro": "music/break_intro.mp3"
     }
 }
 ```
@@ -133,14 +147,24 @@ Edit the `music_files` section in `eurovision_config.json`:
 
 ```json
 "music_files": {
-    "intro": "music/grand_opening.mp3",
-    "breakintro": "music/commercial_break.mp3",
-    "hosts": "music/presenter_theme.mp3",
-    "greenroom": "music/backstage_ambience.mp3",
-    "interval": "music/halftime_show.mp3",
-    "tension": "music/dramatic_moments.mp3",
-    "winner": "music/victory_fanfare.mp3",
-    "credits": "music/closing_theme.mp3"
+        "intro": "music/eurovision-intro.mp3",
+        "hosts": "music/hosts.mp3",
+        "green-room": "music/green-room.mp3",
+        "northernlights": "music/northern-lights.mp3",
+        "malmoarena": "music/malmo-arena.mp3",
+        "beginning": "music/beginning.mp3",
+        "stageready": "music/stage-ready.mp3",
+        "postcard-piano": "music/postcard-piano.mp3",
+        "postcard-flow": "music/postcard-flow.mp3",
+        "postcard-drums": "music/postcard-drums.mp3",
+        "postcard-dreams": "music/postcard-dreams.mp3",
+        "postcard-calm": "music/postcard-calm.mp3",
+        "postcard-arpeggio": "music/postcard-arpeggio.mp3",
+        "voting-music": "music/voting-music.mp3",
+        "lines-closed": "music/lines-closed.mp3",
+        "douze-points": "music/douze-points.mp3",
+        "winners-theme": "music/winners-theme.mp3",
+        "winners-walk": "music/winners-walk.mp3"
 }
 ```
 
@@ -160,68 +184,82 @@ Edit the `music_files` section in `eurovision_config.json`:
 - **Button 40** (Bottom-Right): EFFECTS Menu (Amber)
 - **Button 56** (Bottom-Left): UTILITY Menu (Orange)
 
-### SCENES Menu (Blue Circle Button)
+### 🎬 SCENES Menu (Blue Circle Button)
+
 *Defined in `menu_functions[MenuMode.SCENES]` starting around line 90*
 
-| Button | Function | LED Color | Scene Key |
-|--------|----------|-----------|-----------|
-| 0 | scene_intro | Yellow | "intro" |
-| 1 | scene_video | Yellow | "video" |
-| 16 | scene_stage1 | Green | "stage1" |
-| 17 | scene_stage2 | Green | "stage2" |
-| 18 | scene_stage3 | Green | "stage3" |
-| 19 | scene_stage4 | Green | "stage4" |
-| 20 | scene_stage5 | Green | "stage5" |
-| 21 | scene_stage6 | Green | "stage6" |
-| 22 | scene_stage7 | Green | "stage7" |
-| 23 | scene_stage8 | Green | "stage8" |
-| 32 | scene_greenroom1 | Yellow | "greenroom1" |
-| 33 | scene_greenroom2 | Yellow | "greenroom2" |
-| 34 | scene_greenroom3 | Yellow | "greenroom3" |
-| 35 | scene_greenroom4 | Yellow | "greenroom4" |
-| 7 | scene_break | Yellow | "break" |
-| 64 | scene_scoreboard | Red | "scoreboard" |
-| 65 | scene_winner | Yellow | "winner" |
-| 66 | scene_credits | Green | "credits" |
-| 6 | backup_scene | Red | "backup" |
+| Button | Function             | LED Color | Scene Key  |
+| ------ | -------------------- | --------- | ---------- |
+| 0      | `scene_intro()`      | Yellow    | intro      |
+| 1      | `scene_video()`      | Yellow    | video      |
+| 6      | `backup_scene()`     | Red       | backup     |
+| 7      | `scene_break()`      | Yellow    | break      |
+| 16     | `scene_stage1()`     | Green     | stage1     |
+| 17     | `scene_stage2()`     | Green     | stage2     |
+| 18     | `scene_stage3()`     | Green     | stage3     |
+| 19     | `scene_stage4()`     | Green     | stage4     |
+| 20     | `scene_stage5()`     | Green     | stage5     |
+| 21     | `scene_stage6()`     | Green     | stage6     |
+| 22     | `scene_stage7()`     | Green     | stage7     |
+| 23     | `scene_stage8()`     | Green     | stage8     |
+| 32     | `scene_greenroom1()` | Yellow    | greenroom1 |
+| 33     | `scene_greenroom2()` | Yellow    | greenroom2 |
+| 34     | `scene_greenroom3()` | Yellow    | greenroom3 |
+| 35     | `scene_greenroom4()` | Yellow    | greenroom4 |
+| 64     | `scene_scoreboard()` | Red       | scoreboard |
+| 65     | `scene_winner()`     | Yellow    | winner     |
+| 66     | `scene_credits()`    | Green     | credits    |
 
-### MUSIC Menu (Green Circle Button)
+
+### 🎵 MUSIC Menu (Green Circle Button)
+
 *Defined in `menu_functions[MenuMode.MUSIC]` starting around line 105*
 
-| Button | Function | LED Color | Music Key |
-|--------|----------|-----------|-----------|
-| 0 | play_music("intro", 0) | Green | "intro" |
-| 1 | play_music("breakintro", 1) | Green | "breakintro" |
-| 2 | play_music("hosts", 2) | Green | "hosts" |
-| 3 | play_music("greenroom", 3) | Amber | "greenroom" |
-| 4 | play_music("interval", 4) | Amber | "interval" |
-| 5 | play_music("tension", 5) | Red | "tension" |
-| 6 | play_music("winner", 6) | Green | "winner" |
-| 7 | play_music("credits", 7) | Yellow | "credits" |
-| 32 | stop_music | Red | - |
-| 33 | volume_up | Green | - |
-| 34 | volume_down | Red | - |
-| 35 | mute_toggle | Orange | - |
+| Button | Function                              | LED Color | Music Key         |
+| ------ | ------------------------------------- | --------- | ----------------- |
+| 0      | `play_music("intro", 0)`              | Green     | intro             |
+| 1      | `play_music("northernlights", 1)`     | Green     | northernlights    |
+| 2      | `play_music("malmoarena", 2)`         | Green     | malmoarena        |
+| 3      | `play_music("beginning", 3)`          | Amber     | beginning         |
+| 7      | `play_music("stageready", 7)`         | Yellow    | stageready        |
+| 16     | `play_music("hosts", 16)`             | Blue      | hosts             |
+| 17     | `play_music("green-room", 17)`        | Blue      | green-room        |
+| 48     | `play_music("postcard-piano", 48)`    | Red       | postcard-piano    |
+| 49     | `play_music("postcard-flow", 49)`     | Red       | postcard-flow     |
+| 50     | `play_music("postcard-drums", 50)`    | Red       | postcard-drums    |
+| 51     | `play_music("postcard-dreams", 51)`   | Red       | postcard-dreams   |
+| 52     | `play_music("postcard-calm", 52)`     | Red       | postcard-calm     |
+| 53     | `play_music("postcard-arpeggio", 53)` | Red       | postcard-arpeggio |
+| 80     | `play_music("voting-music", 80)`      | Green     | voting-music      |
+| 81     | `play_music("lines-closed", 81)`      | Red       | lines-closed      |
+| 82     | `play_music("douze-points", 82)`      | Amber     | douze-points      |
+| 96     | `play_music("winners-theme", 96)`     | Yellow    | winners-theme     |
+| 97     | `play_music("winners-walk", 97)`      | Yellow    | winners-walk      |
+| 72     | `stop_music()`                        | Red       | -                 |
+| 88     | `volume_up()`                         | Green     | -                 |
+| 104    | `volume_down()`                       | Red       | -                 |
+| 120    | `mute_toggle()`                       | Orange    | -                 |
+
 
 ### EFFECTS Menu (Amber Circle Button)
 *Defined in `menu_functions[MenuMode.EFFECTS]` starting around line 117*
 
-| Button | Function | LED Color |
-|--------|----------|-----------|
-| 32 | flash_lights | Yellow |
-| 33 | celebration_mode | Amber |
-| 34 | voting_mode | Orange |
-| 35 | technical_break | Amber |
+| Button |     Function     | LED Color |
+|--------|------------------|-----------|
+| 32     |   flash_lights   |   Yellow  |
+| 33     | celebration_mode |   Amber   |
+| 34     |    voting_mode   |   Orange  |
+| 35     |  technical_break |   Amber   |
 
 ### UTILITY Menu (Orange Circle Button)
 *Defined in `menu_functions[MenuMode.UTILITY]` starting around line 122*
 
-| Button | Function | LED Color |
-|--------|----------|-----------|
-| 48 | reset_all | Red |
-| 49 | test_mode | Blue |
-| 50 | emergency_stop | Red |
-| 51 | show_status | Green |
+| Button |    Function    | LED Color |
+|--------|----------------|-----------|
+| 48     |    reset_all   |    Red    |
+| 49     |    test_mode   |    Blue   |
+| 50     | emergency_stop |    Red    |
+| 51     |   show_status  |   Green   |
 
 ## 🔧 Customizing Buttons & LEDs
 
